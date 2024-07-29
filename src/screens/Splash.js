@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { View,Text, Image } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const Splash = ({navigation}) => {
   useState(()=>{

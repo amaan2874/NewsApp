@@ -19,7 +19,7 @@ const Login = ({navigation}) => {
           <Text style={{ color: '#5890FF', fontSize: 17,marginBottom:20}}>Forget the Password ?</Text>
         </View>
         <Pressable>
-          <Text style={styles.Pressable}>Login</Text>
+          <Text onPress={()=>navigation.navigate('Dashboard')}  style={styles.Pressable}>Login</Text>
         </Pressable>
         <Text style={{ color: 'black',textAlign:"center", fontSize: 17,marginTop:20,marginBottom:20 }}>or continue with</Text>
         <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between'}}>
