@@ -6,6 +6,7 @@ const Input = ({placeholder , keyboard,is_password }) => {
     <View>
         <TextInput
         placeholder={placeholder}
+        placeholderTextColor={'#4E4B66'}
             style={{fontSize:18,
                 color:'black',
                 borderWidth:1,
