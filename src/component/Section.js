@@ -1,32 +1,48 @@
-import React from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View, Image, StyleSheet, ActivityIndicator, FlatList } from 'react-native';
+import axios from 'axios';
 
-const Section = () => {
-  return (
+const NewsSection = () => {
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await axios.get('https://newsapi.org/v2/everything?q=tesla&from=2024-06-30&sortBy=publishedAt&apiKey=4d337ed22b0545ea9245ae3846860471');
+        setArticles(response.data.articles);
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
+
+  const renderItem = ({ item }) => (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image
-          source={require('../assets/icons/news.png')}
-          style={styles.newsImage}
-        />
+        {item.urlToImage ? (
+          <Image source={{ uri: item.urlToImage }} style={styles.newsImage} />
+        ) : (
+          <Image source={require('../assets/icons/news.png')} style={styles.newsImage} />
+        )}
       </View>
       <View style={styles.textContainer}>
-        <Text style={styles.regionText}>Europe</Text>
-        <Text style={styles.headlineText}>
-          Russian WarShip: Moskava sinks in black sea
-        </Text>
+        <Text style={styles.regionText}>{item.source.name}</Text>
+        <Text style={styles.headlineText}>{item.title}</Text>
         <View style={styles.infoContainer}>
           <View style={styles.sourceContainer}>
-            <Image
-              source={require('../assets/icons/bbc.png')}
-              style={styles.sourceImage}
-            />
-            <Text style={styles.sourceText}>BBC News</Text>
-            <Image
-              source={require('../assets/icons/hour.png')}
-              style={styles.timeImage}
-            />
-            <Text style={styles.timeText}>4h ago</Text>
+            <Image source={require('../assets/icons/bbc.png')} style={styles.sourceImage} />
+            <Text style={styles.sourceText}>{item.source.name}</Text>
+            <Image source={require('../assets/icons/hour.png')} style={styles.timeImage} />
+            <Text style={styles.timeText}>{new Date(item.publishedAt).toLocaleTimeString()}</Text>
           </View>
           <View style={styles.moreOptions}>
             <Text style={styles.moreText}>...</Text>
@@ -34,6 +50,14 @@ const Section = () => {
         </View>
       </View>
     </View>
+  );
+
+  return (
+    <FlatList
+      data={articles}
+      keyExtractor={(item) => item.url}
+      renderItem={renderItem}
+    />
   );
 };
 
@@ -64,12 +88,12 @@ const styles = StyleSheet.create({
   },
   regionText: {
     fontSize: 15,
-    color:'black',
+    color: 'black',
   },
   headlineText: {
     fontSize: 15,
     fontWeight: 'bold',
-    color:'black',
+    color: 'black',
   },
   infoContainer: {
     flexDirection: 'row',
@@ -90,7 +114,7 @@ const styles = StyleSheet.create({
   sourceText: {
     fontSize: 15,
     paddingRight: 10,
-    color:'black',
+    color: 'black',
   },
   timeImage: {
     width: 20,
@@ -100,15 +124,15 @@ const styles = StyleSheet.create({
   },
   timeText: {
     fontSize: 15,
-    color:'black',
+    color: 'black',
   },
   moreOptions: {
     alignItems: 'flex-end',
   },
   moreText: {
     fontSize: 30,
-    color:'black'
+    color: 'black',
   },
 });
 
-export default Section;
+export default NewsSection;
