@@ -13,7 +13,7 @@ const Tranding = () => {
   const fetchTrendingNews = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('https://newsapi.org/v2/everything?q=tesla&from=2024-06-30&sortBy=publishedAt&apiKey=4d337ed22b0545ea9245ae3846860471');
+      const response = await axios.get('https://newsapi.org/v2/everything?q=tesla&from=2024-07-01&sortBy=publishedAt&apiKey=4d337ed22b0545ea9245ae3846860471');
       setArticles(response.data.articles);
       setLoading(false);
     } catch (error) {
@@ -43,7 +43,7 @@ const Tranding = () => {
                 <Text style={{ fontSize: 15, paddingRight: 50, color: 'black' }}>{articles[0].source.name}</Text>
                 <Image source={require('../assets/icons/hour.png')}
                   style={{ resizeMode: 'contain', maxWidth: '100%' }} />
-                <Text style={{ fontSize: 15, color: 'black' }}>4h ago</Text>
+                <Text style={{ fontSize: 15, color: 'black' }}>just now</Text>
               </View>
               <View style={{ backgroundColor: 'white', paddingBottom: 10 }}>
                 <Text style={{ fontSize: 30, color: 'black' }}>...</Text>

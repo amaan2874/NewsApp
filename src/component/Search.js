@@ -10,7 +10,7 @@ const Search = () => {
   const handleSearch = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://newsapi.org/v2/everything?q=${query}&from=2024-06-30&sortBy=publishedAt&apiKey=4d337ed22b0545ea9245ae3846860471`);
+      const response = await axios.get(`https://newsapi.org/v2/everything?q=tesla&from=2024-07-01&sortBy=publishedAt&apiKey=4d337ed22b0545ea9245ae3846860471`);
       setResults(response.data.articles);
     } catch (error) {
       console.error(error);

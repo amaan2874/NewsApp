@@ -1,14 +1,14 @@
 import React from 'react'
 import { View,TextInput} from 'react-native'
 
-const Input = ({placeholder , keyboard,is_password }) => {
+const Input = ({placeholder , keyboard,is_password,color }) => {
   return (
     <View>
         <TextInput
         placeholder={placeholder}
         placeholderTextColor={'#4E4B66'}
             style={{fontSize:18,
-                color:'black',
+                color:{color},
                 borderWidth:1,
                 borderColor:'black',
                 // margin:10,

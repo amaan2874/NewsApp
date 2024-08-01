@@ -9,7 +9,7 @@ const NewsSection = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get('https://newsapi.org/v2/everything?q=tesla&from=2024-06-30&sortBy=publishedAt&apiKey=4d337ed22b0545ea9245ae3846860471');
+        const response = await axios.get('https://newsapi.org/v2/everything?q=tesla&from=2024-07-01&sortBy=publishedAt&apiKey=4d337ed22b0545ea9245ae3846860471');
         setArticles(response.data.articles);
         setLoading(false);
       } catch (error) {
@@ -106,31 +106,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   sourceImage: {
-    width: 20,
-    height: 20,
+    width: 15,
+    height: 15,
     resizeMode: 'contain',
     marginRight: 5,
   },
   sourceText: {
-    fontSize: 15,
-    paddingRight: 10,
+    fontSize: 10,
+    paddingRight: 5,
     color: 'black',
   },
   timeImage: {
-    width: 20,
-    height: 20,
+    width: 15,
+    height: 15,
     resizeMode: 'contain',
     marginRight: 5,
   },
   timeText: {
-    fontSize: 15,
+    fontSize: 10,
     color: 'black',
   },
   moreOptions: {
     alignItems: 'flex-end',
   },
   moreText: {
-    fontSize: 30,
+    fontSize: 15,
     color: 'black',
   },
 });

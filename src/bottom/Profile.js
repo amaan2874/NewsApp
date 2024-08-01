@@ -20,9 +20,9 @@ const Profile = ({navigation}) => {
           <Text style={{ fontSize: 17, color: 'black' }}>Full Name </Text>
           <Input keyboard="default" />
           <Text style={{ fontSize: 17, color: 'black' }}>Email Address <Text style={{ color: 'red' }}>*</Text></Text>
-          <Input keyboard="default" />
+          <Input keyboard="email-address" />
           <Text style={{ fontSize: 17, color: 'black' }}>Phone Number <Text style={{ color: 'red' }}>*</Text></Text>
-          <Input keyboard="default" />
+          <Input keyboard="number-pad" />
         </View>
       </View>
       <View style={{ backgroundColor: 'white', flex: 1, padding: 10 }}>

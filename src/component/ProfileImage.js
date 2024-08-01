@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, Button, Alert, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Image, Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import ImageCropPicker from 'react-native-image-crop-picker';
 
