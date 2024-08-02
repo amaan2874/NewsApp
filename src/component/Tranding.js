@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Image, ActivityIndicator } from 'react-native';
 import axios from 'axios';
+import { date } from 'yup';
 
 const Tranding = () => {
   const [articles, setArticles] = useState([]);
@@ -13,7 +14,7 @@ const Tranding = () => {
   const fetchTrendingNews = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('https://newsapi.org/v2/everything?q=tesla&from=2024-07-01&sortBy=publishedAt&apiKey=4d337ed22b0545ea9245ae3846860471');
+      const response = await axios.get(`https://newsapi.org/v2/everything?q=tesla&from=${date}&sortBy=publishedAt&apiKey=4d337ed22b0545ea9245ae3846860471`);
       setArticles(response.data.articles);
       setLoading(false);
     } catch (error) {

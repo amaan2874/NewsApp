@@ -10,7 +10,7 @@ const Profile = ({navigation}) => {
         <View style={{ backgroundColor: 'white', flex: 1, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
           <Image onPress={() => navigation.navigate('Home')} source={require('../assets/icons/arrow.png')}
             style={{ height: 30, width: 30 }} />
-          <Text style={{ fontSize: 17, fontWeight: 'bold' }}>Fill your Profile</Text>
+          <Text style={{ fontSize: 17, fontWeight: 'bold',color:'black' }}>Fill your Profile</Text>
           <View style={{ paddingLeft: 30 }} ></View>
         </View>
         <View style={{ backgroundColor: 'white', flex: 8 }}>

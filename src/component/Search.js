@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, TextInput, Image, StyleSheet, ScrollView, Text, ActivityIndicator } from 'react-native';
 import axios from 'axios';
+import { date } from 'yup';
 
 const Search = () => {
   const [query, setQuery] = useState('');
@@ -10,7 +11,7 @@ const Search = () => {
   const handleSearch = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://newsapi.org/v2/everything?q=tesla&from=2024-07-01&sortBy=publishedAt&apiKey=4d337ed22b0545ea9245ae3846860471`);
+      const response = await axios.get(`https://newsapi.org/v2/everything?q=tesla&from=${date}&sortBy=publishedAt&apiKey=4d337ed22b0545ea9245ae3846860471`);
       setResults(response.data.articles);
     } catch (error) {
       console.error(error);
